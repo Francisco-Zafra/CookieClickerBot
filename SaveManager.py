@@ -38,7 +38,7 @@ class SaveManager:
         user.click()
     
     def autoSave(self, intervalo):
-        if time - self.lastAutoSave >= intervalo:
+        if time() - self.lastAutoSave >= intervalo:
             self.lastAutoSave = time()
             self.saveGame()
             

@@ -29,12 +29,12 @@ while True:
         play = not play
     if event == sg.WIN_CLOSED:
         break
-    if event == "BuyB":
-        play = True
-
+    
     if play:
         player.play()
 
+    saveManager.autoSave(60)
+    
 saveManager.saveGame()
 DRIVER.close()
 window.close()
