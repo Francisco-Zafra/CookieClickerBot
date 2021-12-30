@@ -29,8 +29,6 @@ while True:
         play = not play
     if event == sg.WIN_CLOSED:
         break
-    if event == "Buy":
-        play = True
 
     if play:
         player.play()
