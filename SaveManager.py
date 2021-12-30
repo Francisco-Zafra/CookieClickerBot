@@ -2,11 +2,13 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
 from selenium.webdriver.remote.webelement import WebElement
+from time import time
 
 class SaveManager:
     def __init__(self, driver) -> None:
         self.saveFileName : str = 'save'
         self.DRIVER = driver
+        self.lastAutoSave = time()
 
     def loadGame(self):
         ActionChains(self.DRIVER).key_down(Keys.CONTROL).send_keys('o').key_up(Keys.CONTROL).perform()
@@ -34,3 +36,9 @@ class SaveManager:
         user.click()
         user = self.DRIVER.find_element_by_class_name('menuClose')
         user.click()
+    
+    def autoSave(self, intervalo):
+        if time - self.lastAutoSave >= intervalo:
+            self.lastAutoSave = time()
+            self.saveGame()
+            
