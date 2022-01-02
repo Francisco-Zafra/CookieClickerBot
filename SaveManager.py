@@ -40,5 +40,8 @@ class SaveManager:
     def autoSave(self, intervalo):
         if time() - self.lastAutoSave >= intervalo:
             self.lastAutoSave = time()
-            self.saveGame()
-            
+            try:
+                self.saveGame()
+            except:
+                pass
+                
